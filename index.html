@@ -83,5 +83,63 @@
     <p>SALIK SCENTS — Pakistan</p>
     <p>Online ordering will be available soon.</p>
   </footer>
+
+
+<section id="order" style="padding:40px 20px; max-width:550px; margin:auto;">
+  <h2 style="color:#d4af37; text-align:center;">
+    Place Your Order
+  </h2>
+  <p style="text-align:center;">
+    Cash on Delivery Available Across Pakistan
+  </p>
+
+  <form action="https://formspree.io/f/xwlvnwek" method="POST">
+
+    <label>Full Name</label>
+    <input type="text" name="customer_name" required
+      style="width:100%; padding:12px; margin:8px 0 18px;">
+
+    <label>Mobile Number</label>
+    <input type="tel" name="phone" required
+      style="width:100%; padding:12px; margin:8px 0 18px;">
+
+    <label>Delivery Address</label>
+    <textarea name="address" required rows="3"
+      style="width:100%; padding:12px; margin:8px 0 18px;"></textarea>
+
+    <label>City</label>
+    <input type="text" name="city" required
+      style="width:100%; padding:12px; margin:8px 0 18px;">
+
+    <label>Select Perfume</label>
+    <select name="product" required
+      style="width:100%; padding:12px; margin:8px 0 18px;">
+      <option value="">Choose your perfume</option>
+      <option value="Midnight Sultan 50ml">
+        Midnight Sultan - Rs. 2,050
+      </option>
+      <option value="Midnight Queen 50ml">
+        Midnight Queen - Rs. 2,050
+      </option>
+    </select>
+
+    <label>Quantity</label>
+    <input type="number" name="quantity" min="1" value="1" required
+      style="width:100%; padding:12px; margin:8px 0 18px;">
+
+    <input type="hidden" name="payment_method"
+      value="Cash on Delivery">
+
+    <p>Price: Rs. 2,050 per bottle (delivery included)</p>
+
+    <button type="submit"
+      style="background:#d4af37; color:#000; padding:15px;
+      border:0; width:100%; font-weight:bold; cursor:pointer;">
+      PLACE ORDER - CASH ON DELIVERY
+    </button>
+
+  </form>
+</section>
+
 </body>
 </html>
