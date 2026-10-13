@@ -187,8 +187,8 @@ let cart = [];
 
   document.getElementById("cart-items").value = cart.join(", ");
     document.getElementById("cart-total").value = "Rs. " + total.toLocaleString("en-PK");
-    document.querySelector('select[name="product"]').value = "Shopping Cart Order";
-document.querySelector('input[name="quantity"]').value = cart.length;
+    document.querySelector('select[name="product"]').value = cart.length ? "Shopping Cart Order" : "";
+document.querySelector('input[name="quantity"]').value = Math.max(1, cart.length);
   }
 document.querySelector('select[name="product"]').closest("form")
   .addEventListener("submit", function(event) {
