@@ -74,6 +74,7 @@
       <p class="price">Rs. 2,050</p>
       <p>Delivery Included</p>
       <a class="button" href="#order" onclick="document.querySelector('select[name=product]').value='Midnight Sultan 50ml'">Order Now</a>
+    <button type="button" onclick="addToCart('Midnight Sultan 50ml')" style="background:#d4af37; color:black; padding:12px; border:0; border-radius:5px; margin-top:10px; cursor:pointer;">🛒 Add to Cart</button>
     </div>
 
     <div class="product">
@@ -84,6 +85,7 @@
       <p class="price">Rs. 2,050</p>
       <p>Delivery Included</p>
       <a class="button" href="#order" onclick="document.querySelector('select[name=product]').value='Midnight Queen 50ml'">Order Now</a>
+    <button type="button" onclick="addToCart('Midnight Queen 50ml')" style="background:#d4af37; color:black; padding:12px; border:0; border-radius:5px; margin-top:10px; cursor:pointer;">🛒 Add to Cart</button>
     </div>
   </section>
 
@@ -100,9 +102,12 @@
   <p style="text-align:center;">
     Cash on Delivery Available Across Pakistan
   </p>
-
+<div id="cart-summary" style="border:1px solid #d4af37; padding:15px; margin:20px 0; border-radius:10px; color:#d4af37;">
+  🛒 Your Shopping Cart: Empty
+</div>
   <form action="https://formspree.io/f/xwlvnwek" method="POST">
-
+<input type="hidden" name="cart_items" id="cart-items">
+   <input type="hidden" name="cart_total" id="cart-total">
     <label>Full Name</label>
     <input type="text" name="customer_name" required
       style="width:100%; padding:12px; margin:8px 0 18px;">
@@ -129,6 +134,7 @@
       <option value="Midnight Queen 50ml">
         Midnight Queen - Rs. 2,050
       </option>
+   <option value="Shopping Cart Order">Shopping Cart (Selected Perfumes)</option>
     </select>
 
     <label>Quantity</label>
@@ -160,5 +166,44 @@
   <p>SALIK SCENTS - Scents That Speak Your Style</p>
 </footer>
 
+<script>
+let cart = [];
+  function addToCart(product) {
+  cart.push(product);
+    updateCart();
+  alert(product + " added to cart!");
+}
+  function updateCart() {
+  const total = cart.length * 2050;
+  const summary = document.getElementById("cart-summary");
+
+  summary.style.whiteSpace = "pre-line";
+  summary.textContent = cart.length
+    ? "Your Shopping Cart:\n" + cart.join("\n") +
+      "\nTotal: Rs. " + total.toLocaleString("en-PK")
+    : "Your Shopping Cart: Empty";
+
+  document.getElementById("cart-items").value = cart.join(", ");
+    document.getElementById("cart-total").value = "Rs. " + total.toLocaleString("en-PK");
+    document.querySelector('select[name="product"]').value = "Shopping Cart Order";
+document.querySelector('input[name="quantity"]').value = cart.length;
+  }
+document.querySelector('select[name="product"]').closest("form")
+  .addEventListener("submit", function(event) {
+    const selected = document.querySelector('select[name="product"]').value;
+
+    if (selected === "Shopping Cart Order") {
+      if (cart.length === 0) {
+        event.preventDefault();
+        alert("Please add a perfume to your shopping cart first.");
+        return;
+      }
+      updateCart();
+    } else {
+      document.getElementById("cart-items").value = "";
+      document.getElementById("cart-total").value = "";
+    }
+  });
+</script>
 </body>
 </html>
