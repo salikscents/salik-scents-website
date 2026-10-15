@@ -47,6 +47,35 @@
       font-weight: bold;
     }
     footer { padding: 25px; border-top: 1px solid #9c7a37; }
+
+    /* Informational sections added without changing existing store features */
+    .info-area {
+      max-width: 1050px;
+      margin: 28px auto 55px;
+      padding: 0 18px;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 22px;
+    }
+    .info-card {
+      background: #171717;
+      border: 1px solid #9c7a37;
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: left;
+      line-height: 1.7;
+    }
+    .info-card h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+    .info-card p { margin: 12px 0; }
+    .info-card ul { padding-left: 22px; margin: 12px 0; }
+    .info-card li { margin-bottom: 9px; }
+    .info-card strong { color: #e5c77d; }
+    .info-card a { color: #e5c77d; overflow-wrap: anywhere; }
   </style>
 </head>
 <body>
@@ -156,6 +185,44 @@
 
   </form>
 </section>
+
+
+<!-- SALIK SCENTS brand and customer policies -->
+<section class="info-area" aria-label="About SALIK SCENTS and customer policies">
+  <div class="info-grid">
+    <section class="info-card" id="about-us">
+      <h2>About SALIK SCENTS</h2>
+      <p><strong>Founded by Shahzad Ahmad (Salik)</strong> and officially launched on <strong>5 October 2026</strong>, SALIK SCENTS is a fragrance brand based in <strong>Lahore, Pakistan</strong>.</p>
+      <p>Our signature perfumes are <strong>Midnight Sultan</strong> for men and <strong>Midnight Queen</strong> for women. We believe a fragrance can express confidence and individuality.</p>
+      <p><em>Scents That Speak Your Style.</em></p>
+    </section>
+
+    <section class="info-card" id="delivery-policy">
+      <h2>Delivery Across Pakistan</h2>
+      <p><strong>Delivery coverage:</strong> All across Pakistan.</p>
+      <p><strong>Estimated delivery:</strong> 7–10 calendar days.</p>
+      <p><strong>Payment:</strong> Cash on Delivery (COD).</p>
+      <p><strong>Standard delivery charges:</strong> Included in the listed product price.</p>
+      <ul>
+        <li>Please provide your correct phone number and complete delivery address, including your city and postal code if available.</li>
+        <li>Additional delivery charges may apply to remote or hard-to-reach areas.</li>
+        <li>If an incorrect or incomplete address causes a failed delivery, re-delivery charges may apply.</li>
+        <li>Any extra delivery charges will be explained to you for approval before they are applied.</li>
+      </ul>
+      <p>Delivery may be affected by courier availability, weather, or other unforeseen circumstances.</p>
+    </section>
+
+    <section class="info-card" id="replacement-policy">
+      <h2>10-Day Replacement Guarantee</h2>
+      <p>We offer a <strong>10-day replacement guarantee</strong> if your perfume does not last for <strong>10 hours under normal use</strong>.</p>
+      <p>To request a replacement, please contact us <strong>within 10 calendar days of receiving your order</strong>, with your order details and a description of the issue.</p>
+      <p>We will review your request and provide return instructions. Once we receive the returned perfume and approve the claim, a replacement will be arranged.</p>
+      <p><strong>Return location:</strong> Lahore, Pakistan. The complete return shipping address will be provided after you contact us; please do not send a parcel without return instructions.</p>
+      <p><strong>Replacement support:</strong> <a href="mailto:salikscents2@gmail.com">salikscents2@gmail.com</a></p>
+    </section>
+  </div>
+</section>
+<!-- End SALIK SCENTS brand and customer policies -->
 
 <footer style="text-align:center; padding:30px 15px; border-top:1px solid #9c7a37; margin-top:30px;">
   <h2 style="color:#d7b76c;">Contact Us</h2>
