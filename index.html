@@ -103,7 +103,14 @@
 </div>
 <p style="font-size:18px;">Mix Midnight Sultan and Midnight Queen in any combination.</p>
 <p style="color:#d7b76c;font-weight:bold;">SAVE RS. 600 — DELIVERY INCLUDED</p>
-<a href="#order" class="button">ORDER YOUR BUNDLE</a>
+<label for="bundle-choice" style="display:block;margin:15px 0 8px;color:#d7b76c;font-weight:bold;">Choose Your 3 Perfumes:</label>
+<select id="bundle-choice" style="width:100%;max-width:420px;padding:12px;margin-bottom:15px;border-radius:6px;">
+  <option value="3,0">3 Midnight Sultan</option>
+  <option value="2,1">2 Midnight Sultan + 1 Midnight Queen</option>
+  <option value="1,2">1 Midnight Sultan + 2 Midnight Queen</option>
+  <option value="0,3">3 Midnight Queen</option>
+</select>
+  <a href="#order" class="button" onclick="orderBundle()">ORDER YOUR BUNDLE</a>
 </section>
   <section class="products">
     <div class="product">
@@ -293,6 +300,25 @@ function removeFromCart(product) {
     updateCart();
     alert(product + " removed from cart!");
   }
+}
+function orderBundle() {
+  const choice = document.getElementById("bundle-choice").value;
+  const [sultan, queen] = choice.split(",").map(Number);
+
+  cart.length = 0;
+
+  for (let i = 0; i < sultan; i++) {
+    cart.push("Midnight Sultan 50ml");
+  }
+
+  for (let i = 0; i < queen; i++) {
+    cart.push("Midnight Queen 50ml");
+  }
+
+  updateCart();
+  document.getElementById("order").scrollIntoView({
+    behavior: "smooth"
+  });
 }
 </script>
 </body>
