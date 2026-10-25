@@ -145,6 +145,39 @@
     <button type="button" onclick="addToCart('Midnight Queen 50ml')" style="background:#d4af37; color:black; padding:12px; border:0; border-radius:5px; margin-top:10px; cursor:pointer;">🛒 Add to Cart</button>
     <button type="button" onclick="removeFromCart('Midnight Queen 50ml')" style="background:#333; color:#d4af37; padding:12px; border:1px solid #d4af37; border-radius:5px; margin-top:10px; cursor:pointer;">Remove from Cart</button>
     </div>
+    
+<div class="product">
+  <img src="ChatGPT Image Oct 25, 2026, 10_34_51 PM.png" alt="SALIK OUD 12ml" style="width:100%;height:auto;border-radius:10px;">
+  <h2>SALIK OUD</h2>
+  <p>Premium Oud Attar | 12ml</p>
+  <p class="price">Rs. 1,800</p>
+  <p>Delivery Included</p>
+
+<a class="button" href="#order" onclick="document.querySelector('select[name=product]').value='SALIK OUD 12ml'">Order Now</a>
+
+
+<button type="button" onclick="addToCart('SALIK OUD 12ml')" style="background:#d4af37;color:black;padding:12px;border:0;border-radius:5px;margin-top:10px;cursor:pointer;">🛒 Add to Cart</button>
+
+<button type="button" onclick="removeFromCart('SALIK OUD 12ml')" style="background:#333;color:#d4af37;padding:12px;border:1px solid #d4af37;border-radius:5px;margin-top:10px;cursor:pointer;">Remove from Cart</button>
+
+</div>
+
+<div class="product">
+  <img src="ChatGPT Image Oct 25, 2026, 10_35_20 PM.png" alt="MAJZOOB OUD 12ml" style="width:100%;height:auto;border-radius:10px;">
+  <h2>MAJZOOB OUD</h2>
+  <p>Premium Oud Attar | 12ml</p>
+  <p class="price">Rs. 1,800</p>
+  <p>Delivery Included</p>
+
+<a class="button" href="#order" onclick="document.querySelector('select[name=product]').value='MAJZOOB OUD 12ml'">Order Now</a>
+
+<button type="button" onclick="addToCart('MAJZOOB OUD 12ml')" style="background:#d4af37;color:black;padding:12px;border:0;border-radius:5px;margin-top:10px;cursor:pointer;">Add to Cart</button>
+
+
+<button type="button" onclick="removeFromCart('MAJZOOB OUD 12ml')" style="background:#333;color:#d4af37;padding:12px;border:1px solid #d4af37;border-radius:5px;margin-top:10px;cursor:pointer;">Remove from Cart</button>
+
+</div>
+
   </section>
 
   <footer id="contact">
@@ -192,7 +225,12 @@
       <option value="Midnight Queen 50ml">
         Midnight Queen - Rs. 2,050..
       </option>
-   <option value="Shopping Cart Order">Shopping Cart (Selected Perfumes)</option>
+   
+<option value="SALIK OUD 12ml">SALIK OUD - Rs. 1,800 (12ml, delivery included)</option
+                                                                                
+<option value="MAJZOOB OUD 12ml">MAJZOOB OUD - Rs. 1,800</option>
+
+      <option value="Shopping Cart Order">Shopping Cart (Selected Perfumes)</option>
     </select>
 
     <label>Quantity</label>
@@ -284,7 +322,9 @@ let cart = [];
 }
   function updateCart() {
 
-const total = Math.floor(cart.length / 3) * 4800 + (cart.length % 3 === 2 ? 3850 : cart.length % 3 === 1 ? 2050 : 0);
+
+const perfumes = cart.filter(p => !p.includes("OUD")).length, ouds = cart.length - perfumes; const total = Math.floor(perfumes / 3) * 4800 + (perfumes % 3 === 2 ? 3850 : perfumes % 3 === 1 ? 2050 : 0) + ouds * 1800;
+
 
   const summary = document.getElementById("cart-summary");
 
@@ -313,7 +353,9 @@ document.querySelector('select[name="product"]').closest("form")
     } else {
     const quantity = Math.max(1, parseInt(document.querySelector('input[name="quantity"]').value, 10) || 1);
 
-const total = Math.floor(quantity / 3) * 4800 + (quantity % 3 === 2 ? 3850 : quantity % 3 === 1 ? 2050 : 0);
+
+const total = selected.includes("OUD") ? quantity * 1800 : Math.floor(quantity / 3) * 4800 + (quantity % 3 === 2 ? 3850 : quantity % 3 === 1 ? 2050 : 0);
+
 
 document.getElementById("cart-items").value = selected + " x " + quantity;
 document.getElementById("cart-total").value = "Rs. " + total.toLocaleString("en-PK");
