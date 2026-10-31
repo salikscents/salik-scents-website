@@ -451,11 +451,11 @@ document.getElementById("review-form").addEventListener("submit", async (event) 
       name,
       rating,
       message,
-      approved: false,
+   approved: true,
       createdAt: serverTimestamp()
     });
 
-    status.textContent = "Thank you! Your review has been submitted for approval.";
+  status.textContent = "Thank you! Your review has been published.";
     event.target.reset();
   } catch (error) {
     console.error("Review submission error:", error);
