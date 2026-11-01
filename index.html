@@ -417,6 +417,9 @@ function orderBundle() {
   <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
  import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+    
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app-check.js";
+
 
   const firebaseConfig = {
     apiKey: "AIzaSyCW-0unfStNhkd3TVfm8hJEwPqA8wVmpfg",
@@ -429,6 +432,12 @@ function orderBundle() {
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+  
+const appCheck = initializeAppCheck(app, {
+  provider: new ReCaptchaEnterpriseProvider("6Lc_DAsuAAAAALo_MDSN-61O6tApXrN52C1QYW4d"),
+  isTokenAutoRefreshEnabled: true
+});
+  
 
     
 document.getElementById("review-form").addEventListener("submit", async (event) => {
