@@ -160,7 +160,12 @@
 
 <p>Choose Midnight Sultan, Midnight Queen, or one of each.</p>
 <p style="color:#d7b76c;font-weight:bold;">SAVE RS. 250 - DELIVERY INCLUDED</p>
-<a href="#products" class="button">CHOOSE YOUR PERFUMES</a>
+<select id="doubleBundleChoice">
+<option value="2,0">2 Midnight Sultan</option>
+<option value="1,1">1 Midnight Sultan + 1 Midnight Queen</option>
+<option value="0,2">2 Midnight Queen</option>
+</select>
+  <a href="#order" class="button" onclick="orderDoubleBundle()">ORDER YOUR DOUBLE BUNDLE</a>
 </section>
 
 <section class="products" id="products">
@@ -450,6 +455,28 @@ function orderBundle() {
     behavior: "smooth"
   });
 }
+
+
+function orderDoubleBundle() {
+  const choice = document.getElementById("doubleBundleChoice").value;
+  const [sultan, queen] = choice.split(",").map(Number);
+
+  cart.length = 0;
+
+  for (let i = 0; i < sultan; i++) {
+    cart.push("Midnight Sultan 50ml");
+  }
+
+  for (let i = 0; i < queen; i++) {
+    cart.push("Midnight Queen 50ml");
+  }
+
+  updateCart();
+  document.getElementById("order").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
 </script>
 
 
