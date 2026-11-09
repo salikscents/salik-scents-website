@@ -76,6 +76,42 @@
     .info-card li { margin-bottom: 9px; }
     .info-card strong { color: #e5c77d; }
     .info-card a { color: #e5c77d; overflow-wrap: anywhere; }
+  
+@media screen and (max-width: 600px) {
+  .products {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 15px 10px 35px;
+  }
+
+  .product {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 6px;
+  }
+
+  .product h2 {
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .product img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .product .button,
+  .product button {
+    max-width: 100%;
+    box-sizing: border-box;
+    font-size: 12px;
+    padding: 9px 5px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
   </style>
 </head>
 <body>
