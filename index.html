@@ -613,5 +613,43 @@ loadApprovedReviews();
 
   </script>
 
+
+
+<section id="verify-product" style="background:#111;color:#d7b76c;text-align:center;padding:35px 20px;border-top:2px solid #d7b76c;">
+  <h2>VERIFY YOUR SALIK SCENTS PRODUCT</h2>
+  <p>Check the authenticity of your SALIK SCENTS perfume.</p>
+  <p>Enter the unique verification code found beneath the scratch-off label on your perfume box.</p>
+
+  <input
+    type="text"
+    id="verificationCode"
+    placeholder="Enter verification code"
+    maxlength="40"
+    style="padding:12px;width:90%;max-width:320px;border-radius:6px;"
+  >
+
+  <button type="button" onclick="verifySalikProduct()" style="padding:12px 20px;background:#d7b76c;color:#111;border:0;border-radius:6px;cursor:pointer;">
+    VERIFY PRODUCT
+  </button>
+
+  <p id="verificationResult" aria-live="polite"></p>
+</section>
+
+
+
+<script>
+async function verifySalikProduct() {
+  const code = document.getElementById("verificationCode").value.trim();
+  const result = document.getElementById("verificationResult");
+
+  if (!code) {
+    result.textContent = "Please enter your verification code.";
+    return;
+  }
+
+  result.textContent = "Verification service is being configured. Please try again later.";
+}
+</script>
+
 </body>
 </html>
