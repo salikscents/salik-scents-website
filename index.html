@@ -620,6 +620,17 @@ loadApprovedReviews();
   <p>Check the authenticity of your SALIK SCENTS perfume.</p>
   <p>Enter the unique verification code found beneath the scratch-off label on your perfume box.</p>
 
+  
+<input
+  type="text"
+  id="serialNumber"
+  placeholder="Enter product serial number"
+  maxlength="80"
+  style="padding:12px;width:90%;max-width:320px;border-radius:6px;margin-bottom:10px;"
+>
+
+
+
   <input
     type="text"
     id="verificationCode"
@@ -638,17 +649,51 @@ loadApprovedReviews();
 
 
 <script>
+
 async function verifySalikProduct() {
-  const code = document.getElementById("verificationCode").value.trim();
+  const serialNumber = document.getElementById("serialNumber").value.trim();
+  const verificationCode = document.getElementById("verificationCode").value.trim();
   const result = document.getElementById("verificationResult");
 
-  if (!code) {
-    result.textContent = "Please enter your verification code.";
+  if (!serialNumber || !verificationCode) {
+    result.textContent = "Please enter both the serial number and verification code.";
     return;
   }
 
-  result.textContent = "Verification service is being configured. Please try again later.";
+  result.textContent = "Checking your product...";
+
+  try {
+    const response = await fetch(
+      "https://salik-scents-verification.salikscents2.workers.dev/verify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          serial_number: serialNumber,
+          verification_code: verificationCode
+        })
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Verification service error");
+    }
+
+    const data = await response.json();
+
+    if (data.valid === true) {
+      result.textContent = "Product verified: " + (data.product_name || "SALIK SCENTS");
+    } else {
+      result.textContent = data.message || "Product verification failed.";
+    }
+  } catch (error) {
+    result.textContent = "Unable to verify right now. Please try again later.";
+    console.error("Verification error:", error);
+  }
 }
+
 </script>
 
 </body>
